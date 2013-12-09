@@ -17,7 +17,7 @@ class UserController extends BaseController {
      */
     public function create()
     {
-        $this->layout->content = View::make(Config::get('confide::signup_form'));
+        return View::make(Config::get('confide::signup_form'));
     }
 
     /**

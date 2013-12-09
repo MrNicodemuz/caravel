@@ -83,4 +83,23 @@ class UserControllerTest extends TestCase {
         $this->assertRedirectedTo('/');
     }
 
+    public function testShouldGetRegistrationFrom()
+    {
+        Config::shouldReceive('get')
+            ->with('confide::signup_form')
+            ->once()
+            ->andReturn('user.signup');
+
+        View::shouldReceive('make')
+            ->with('user.signup');
+
+        View::shouldReceive('make')
+            ->with('layouts.master');
+
+        $this->call('GET', 'user/create');
+
+        $this->assertViewHasAll(array());
+    }
+
+
 }

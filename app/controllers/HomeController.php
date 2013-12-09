@@ -19,7 +19,7 @@ class HomeController extends BaseController {
 	{
         $cars = Car::ofModel('')->get();
 
-        $this->layout->content= View::make('hello')->with('cars', $cars);
+		return View::make('hello')->with('cars', $cars);
 	}
 
 }
