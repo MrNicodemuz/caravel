@@ -30,9 +30,9 @@
       <li><a href="#">By Year</a></li>
     </ul>
 
-    <form class="navbar-form navbar-left" role="search">
+    <form class="navbar-form navbar-left" role="search" action="/search/">
       <div class="form-group">
-        <input type="text" class="form-control" placeholder="Search for your dream car">
+        <input name="q" type="text" class="form-control" placeholder="Search for your dream car">
       </div>
       <button type="submit" class="btn btn-default">Submit</button>
     </form>

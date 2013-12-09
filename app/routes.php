@@ -17,6 +17,7 @@ Route::get('/', function()
 });
 
 Route::get('car/{id}', 'CarController@getIndex');
+Route::get('search/{query?}', 'SearchCarController@search');
 
 // Confide routes
 Route::get( 'user/create',                 'UserController@create');

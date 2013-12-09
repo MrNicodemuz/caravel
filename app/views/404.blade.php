@@ -1,4 +1,4 @@
-@extends('carlayout')
+@extends('layouts.master')
 
 @section('content')
     Car not found!
