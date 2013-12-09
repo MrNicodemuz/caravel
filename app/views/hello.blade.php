@@ -5,7 +5,11 @@
     <div class="container">
         <h1>Welcome to Caravel!</h1>
         <p>Cars, Dream cars everywhere!</p>
-        <p><a role="button" class="btn btn-primary btn-lg" href="/user/create">Join Us! »</a></p>
+        @if(Auth::check())
+            <!-- nada -->
+        @else
+            <p><a role="button" class="btn btn-primary btn-lg" href="/user/create">Join Us! »</a></p>
+        @endif
     </div>
 </div>
 
