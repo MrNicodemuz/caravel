@@ -44,7 +44,8 @@ class CarCommand extends Command {
                 'byModel model',
                 'newCar model',
                 'byId id',
-                'distinct'
+                'distinct',
+                'delete id'
             )) .
             "\n";
         
@@ -95,6 +96,18 @@ class CarCommand extends Command {
                 }
                 
                 print_r($distinct);
+                break;
+            case 'delete':
+                $id = intval($this->argument('arg1'));
+                
+                $this->info("Deleting id $id");
+                $car = Car::find($id);
+                if (empty($car)) {
+                    $this->error("Id $id not found!\n");
+                }
+                else {
+                    $car->delete();
+                }
                 break;
             default:
                 $this->error("Unknown command '$commandType'");
