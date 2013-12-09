@@ -25,6 +25,12 @@ class Car extends Eloquent
         return $query->where('model', 'LIKE', "$model%");
     }
     
+    // Case-insensitive color search
+    public function scopeOfColor($query, $color)
+    {
+        return $query->where('color', 'LIKE', $color);
+    }
+    
     // This cannot be called "distinct" because it causes infinite recursion
     public function scopeGetDistinct($query)
     {

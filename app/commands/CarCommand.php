@@ -42,6 +42,7 @@ class CarCommand extends Command {
             "Commands types:\n\t" .
             implode("\n\t", array(
                 'byModel model',
+                'byColor color',
                 'newCar model',
                 'byId id',
                 'distinct',
@@ -59,6 +60,13 @@ class CarCommand extends Command {
                 
                 $this->info("Searching for '$model*'");
                 $cars = Car::ofModel($model)->get();
+                print_r($cars);
+                break;
+            case 'byColor':
+                $color = $this->argument('arg1');
+                
+                $this->info("Searching color $color");
+                $cars = Car::ofColor($color)->get();
                 print_r($cars);
                 break;
             case 'byId':
@@ -102,6 +110,7 @@ class CarCommand extends Command {
                 
                 $this->info("Deleting id $id");
                 $car = Car::find($id);
+                
                 if (empty($car)) {
                     $this->error("Id $id not found!\n");
                 }
