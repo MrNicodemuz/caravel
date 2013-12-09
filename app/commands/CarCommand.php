@@ -38,22 +38,52 @@ class CarCommand extends Command {
     public function fire()
     {
         $commandType = $this->argument('commandType');
+        $types =
+            "Commands types:\n\t" .
+            implode("\n\t", array(
+                'byModel model',
+                'newCar model',
+                'byId id'
+            )) .
+            "\n";
         
         if (empty($commandType)) {
-            $this->info("Commands types:\n\tsearchModel model\n");
-            return;
+            $this->info($types);
         }
         
         switch ($commandType) {
-            case 'searchModel':
+            case 'byModel':
                 $model = $this->argument('arg1');
                 
                 $this->info("Searching for '$model*'");
                 $cars = Car::ofModel($model)->get();
                 print_r($cars);
                 break;
+            case 'byId':
+                $id = intval($this->argument('arg1'));
+                
+                $this->info("Searching id $id");
+                $car = Car::ofId($id)->get();
+                
+                if (empty($car)) {
+                    $this->error("Id $id not found!\n");
+                }
+                else {
+                    print_r($car);
+                }
+                break;
+            case 'newCar':
+                $car = Car::create(array(
+                    'model' => $this->argument('arg1')
+                ));
+                
+                $car->save();
+                
+                print_r($car);
+                break;
             default:
                 $this->error("Unknown command '$commandType'");
+                $this->info($types);
                 break;
         }
     }
