@@ -5955,11 +5955,12 @@ td.visible-print {
     display: none !important;
   }
 }
-ul.cars {
+.cars {
   list-style: none;
   margin: 0;
+  border: 1px solid white;
 }
-ul.cars li.car {
+.cars .car {
   cursor: pointer;
   float: left;
   width: 250px;
@@ -5968,17 +5969,56 @@ ul.cars li.car {
   position: relative;
   top: 0px;
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0);
+  border-radius: 4px;
 }
-ul.cars li.car:hover {
+.cars .car:hover {
   box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.5);
   top: -5px;
 }
-ul.cars img {
+.cars img {
+  vertical-align: middle;
   display: block;
   width: 100%;
 }
-ul.cars .model,
-ul.cars .year,
-ul.cars .ncomments {
+.cars .model,
+.cars .year,
+.cars .ncomments {
   display: block;
+}
+.container .jumbotron.car-jumbo {
+  padding: 20px;
+}
+.container .jumbotron.car-jumbo img {
+  width: 100%;
+}
+.comments {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.comments .person {
+  font-weight: bold;
+  font-style: italic;
+}
+.comments .comment {
+  padding: 5px 20px;
+  list-style: none;
+  margin-bottom: 0.5em;
+}
+.comments .comment blockquote {
+  position: relative;
+}
+.comment-delete {
+  position: absolute;
+  top: 0;
+  left: -10px;
+  background: white;
+  min-height: 20px;
+  min-width: 20px;
+  border-radius: 10px;
+  line-height: 20px;
+}
+.comment-delete:hover:after {
+  content: 'Delete comment';
+  text-decoration: none;
 }

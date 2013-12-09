@@ -26,7 +26,7 @@
   <div class="collapse navbar-collapse" id="caravel-menu-collapse">
     <ul class="nav navbar-nav">
       <li class="active"><a href="/">Home</a></li>
-      <li><a href="#">By Cars</a></li>
+      <li><a href="/models">By Models</a></li>
       <li><a href="#">By Year</a></li>
     </ul>
 
@@ -36,22 +36,31 @@
       </div>
       <button type="submit" class="btn btn-default">Submit</button>
     </form>
-    <ul class="nav navbar-nav navbar-right">
+
+    <div class=" navbar-right">
       @if(Auth::check())
-      <li class="dropdown">
-        <a href="#userMenu" class="dropdown-toggle" data-toggle="dropdown">Hello {{ Auth::user()->username }}! <b class="caret"></b></a>
-        <ul class="dropdown-menu" role="menu">
-          <li><a href="#">My Deteils</a></li>
-          <li><a href="#">My Cars</a></li>
-          <li class="divider"></li>
-          <li><a href="/user/logout">Logout</a></li>
-        </ul>
-      </li>
-      @else
-        <li><a href="/user/login">Login</a></li>
-        <li><a href="/user/create">Register</a></li>
+      <div class="nav navbar-nav navbar-upload">
+          <a class="btn btn-success navbar-btn" role="button" href="/car/new">Upload!</a>
+      </div>
       @endif
-    </ul>
+      <ul class="nav navbar-nav">
+        @if(Auth::check())
+        <li class="dropdown">
+          <a href="#userMenu" class="dropdown-toggle" data-toggle="dropdown">Hello {{ Auth::user()->username }}! <b class="caret"></b></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="#">My Details</a></li>
+            <li><a href="#">My Cars</a></li>
+            <li class="divider"></li>
+            <li><a href="/user/logout">Logout</a></li>
+          </ul>
+        </li>
+        @else
+          <li><a href="/user/login">Login</a></li>
+          <li><a href="/user/create">Register</a></li>
+        @endif
+      </ul>
+    </div>
+
   </div><!-- /.navbar-collapse -->
 </div>
 </nav>
@@ -60,6 +69,9 @@
     <div class="container">
         @yield('content')
     </div>
+    <footer class="container">
+      <p>&copy; Caravel 2013</p>
+    </footer>
 
     <script src="https://code.jquery.com/jquery.js"></script>
     <script src="/assets/js/bootstrap.min.js"></script>

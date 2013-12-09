@@ -17,7 +17,9 @@ class HomeController extends BaseController {
 
 	public function showWelcome()
 	{
-		$this->layout->content = View::make('hello');
+        $cars = Car::ofModel('')->get();
+
+        $this->layout->content= View::make('hello')->with('cars', $cars);
 	}
 
 }

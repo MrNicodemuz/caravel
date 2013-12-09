@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
-<div class="jumbotron">
+<div class="jumbotron home-jumbo">
     <div class="container">
         <h1>Welcome to Caravel!</h1>
         <p>Cars, Dream cars everywhere!</p>
@@ -13,29 +13,18 @@
     </div>
 </div>
 
-      <!-- Example row of columns -->
-      <div class="row">
-        <div class="col-md-4">
-          <h2>Fast cars?!</h2>
-          <p>We got them.</p>
-          <p><a role="button" href="#" class="btn btn-default">View Fast cars »</a></p>
+<div class="row cars">
+@foreach ($cars as $car)
+    <div class="col-xs-6 col-md-3">
+        <div class="thumbnail car">
+            <a href="/car/{{$car->id}}">
+                <img src="{{$car->foto_url}}">
+            </a>
+            <a href="/car/{{$car->id}}" class="model">{{$car->model}}</a>
+            <a href="/car/{{$car->id}}" class="year">{{$car->year}}</a>
+            <a href="/car/{{$car->id}}" class="ncomments">{{$car->comments}}</a>
         </div>
-        <div class="col-md-4">
-          <h2>Red Cars?!</h2>
-          <p>We got them.</p>
-          <p><a role="button" href="#" class="btn btn-default">View Red cars »</a></p>
-       </div>
-        <div class="col-md-4">
-          <h2>Fiat Puntos?!</h2>
-          <p>GTFO!</p>
-          <p><a role="button" href="http://www.zara.com" class="btn btn-default">Go to zara.com »</a></p>
-        </div>
-      </div>
-
-      <hr>
-
-      <footer>
-        <p>&copy; Caravel 2013</p>
-      </footer>
     </div>
+@endforeach
+</div>
 @stop
