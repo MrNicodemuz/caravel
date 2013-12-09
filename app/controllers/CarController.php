@@ -10,7 +10,7 @@ class CarController extends BaseController {
             return View::make('404');
         }
 
-        $this->layout->content= View::make('car')->with('car', $car)
+        $this->layout->content= View::make('car')->with('car', $car);
     }
 
 }
