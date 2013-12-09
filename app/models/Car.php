@@ -48,6 +48,11 @@ class Car extends Eloquent
         return $query->where('color', 'LIKE', $color);
     }
     
+    public function scopeOfUserId($query, $id)
+    {
+        return $query->where('user_id', '=', $id);
+    }
+    
     // This cannot be called "distinct" because it causes infinite recursion
     public function scopeGetDistinct($query)
     {

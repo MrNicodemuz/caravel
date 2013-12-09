@@ -45,6 +45,7 @@ class CarCommand extends Command {
                 'byColor color',
                 'newCar model',
                 'byId id',
+                'byUserId id',
                 'distinct',
                 'distinctModels',
                 'distinctColors',
@@ -77,6 +78,13 @@ class CarCommand extends Command {
                 
                 $this->info("Searching color $color");
                 $cars = Car::ofColor($color)->get();
+                print_r($cars);
+                break;
+            case 'byUserId':
+                $id = intval($this->argument('arg1'));
+                
+                $this->info("Searching by user id $id");
+                $cars = Car::ofUserId($id)->get();
                 print_r($cars);
                 break;
             case 'byId':
