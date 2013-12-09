@@ -114,6 +114,7 @@ return array(
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
         'Zizaco\Confide\ConfideServiceProvider',
+        'Aws\Laravel\AwsServiceProvider',
 
 	),
 
@@ -180,6 +181,7 @@ return array(
 		'Validator'       => 'Illuminate\Support\Facades\Validator',
 		'View'            => 'Illuminate\Support\Facades\View',
         'Confide'         => 'Zizaco\Confide\ConfideFacade',
+        'AWS'             => 'Aws\Laravel\AwsFacade',
 
 	),
 
