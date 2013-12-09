@@ -14,7 +14,6 @@ class CreateCarsTable extends Migration {
 		Schema::create('cars', function($table)
         {
             $table->increments('id');
-            $table->string('model')->unique();
         });
 	}
 

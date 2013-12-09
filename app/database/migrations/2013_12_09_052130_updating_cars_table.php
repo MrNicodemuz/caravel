@@ -18,6 +18,7 @@ class UpdatingCarsTable extends Migration {
 		    $table->string('foto_url');
 		    $table->string('year');
 		    $table->string('color');
+		    $table->string('model');
 		});
 	}
 
