@@ -43,7 +43,8 @@ class CarCommand extends Command {
             implode("\n\t", array(
                 'byModel model',
                 'newCar model',
-                'byId id'
+                'byId id',
+                'distinct'
             )) .
             "\n";
         
@@ -80,6 +81,20 @@ class CarCommand extends Command {
                 $car->save();
                 
                 print_r($car);
+                break;
+            case 'distinct':
+                $model = $this->argument('arg1');
+                
+                if (empty($model)) {
+                    // Get all distinct cars
+                    $distinct = Car::getDistinct()->get();
+                }
+                else {
+                    // Get distinct cars matching the model
+                    $distinct = Car::ofModel($model)->getDistinct()->get();
+                }
+                
+                print_r($distinct);
                 break;
             default:
                 $this->error("Unknown command '$commandType'");
