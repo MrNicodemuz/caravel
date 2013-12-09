@@ -28,9 +28,9 @@ class UserController extends BaseController {
     {
         $user = new User;
 
-        $user->username = Input::get( 'username' );
-        $user->email = Input::get( 'email' );
-        $user->password = Input::get( 'password' );
+        $user->username = Input::get('username');
+        $user->email = Input::get('email');
+        $user->password = Input::get('password');
 
         // The password confirmation will be removed from model
         // before saving. This field will be used in Ardent's
@@ -40,20 +40,16 @@ class UserController extends BaseController {
         // Save if valid. Password field will be hashed before save
         $user->save();
 
-        if ( $user->id )
+        if ($user->id)
         {
             // Redirect with success message, You may replace "Lang::get(..." for your custom message.
-                        return Redirect::action('UserController@login')
-                            ->with( 'notice', Lang::get('confide::confide.alerts.account_created') );
+            return Redirect::action('UserController@login')->with('notice', Lang::get('confide::confide.alerts.account_created'));
         }
-        else
-        {
+        else {
             // Get validation errors (see Ardent package)
             $error = $user->errors()->all(':message');
 
-                        return Redirect::action('UserController@create')
-                            ->withInput(Input::except('password'))
-                ->with( 'error', $error );
+            return Redirect::action('UserController@create')->withInput(Input::except('password'))->with('error', $error);
         }
     }
 
@@ -82,17 +78,17 @@ class UserController extends BaseController {
     public function do_login()
     {
         $input = array(
-            'email'    => Input::get( 'email' ), // May be the username too
-            'username' => Input::get( 'email' ), // so we have to pass both
-            'password' => Input::get( 'password' ),
-            'remember' => Input::get( 'remember' ),
+            'email'    => Input::get('email'), // May be the username too
+            'username' => Input::get('email'), // so we have to pass both
+            'password' => Input::get('password'),
+            'remember' => Input::get('remember'),
         );
 
         // If you wish to only allow login from confirmed users, call logAttempt
         // with the second parameter as true.
         // logAttempt will check if the 'email' perhaps is the username.
         // Get the value from the config file instead of changing the controller
-        if ( Confide::logAttempt( $input, Config::get('confide::signup_confirm') ) ) 
+        if (Confide::logAttempt( $input, Config::get('confide::signup_confirm')))
         {
             // Redirect the user to the URL they were trying to access before
             // caught by the authentication filter IE Redirect::guest('user/login').
@@ -105,11 +101,11 @@ class UserController extends BaseController {
             $user = new User;
 
             // Check if there was too many login attempts
-            if( Confide::isThrottled( $input ) )
+            if( Confide::isThrottled($input))
             {
                 $err_msg = Lang::get('confide::confide.alerts.too_many_attempts');
             }
-            elseif( $user->checkUserExists( $input ) and ! $user->isConfirmed( $input ) )
+            elseif($user->checkUserExists($input) and !$user->isConfirmed($input))
             {
                 $err_msg = Lang::get('confide::confide.alerts.not_confirmed');
             }
@@ -118,9 +114,7 @@ class UserController extends BaseController {
                 $err_msg = Lang::get('confide::confide.alerts.wrong_credentials');
             }
 
-                        return Redirect::action('UserController@login')
-                            ->withInput(Input::except('password'))
-                ->with( 'error', $err_msg );
+            return Redirect::action('UserController@login')->withInput(Input::except('password'))->with('error', $err_msg);
         }
     }
 
@@ -129,19 +123,17 @@ class UserController extends BaseController {
      *
      * @param  string  $code
      */
-    public function confirm( $code )
+    public function confirm($code)
     {
-        if ( Confide::confirm( $code ) )
+        if ( Confide::confirm($code))
         {
             $notice_msg = Lang::get('confide::confide.alerts.confirmation');
-                        return Redirect::action('UserController@login')
-                            ->with( 'notice', $notice_msg );
+            return Redirect::action('UserController@login')->with('notice', $notice_msg);
         }
         else
         {
             $error_msg = Lang::get('confide::confide.alerts.wrong_confirmation');
-                        return Redirect::action('UserController@login')
-                            ->with( 'error', $error_msg );
+            return Redirect::action('UserController@login')->with('error', $error_msg);
         }
     }
 
@@ -160,18 +152,15 @@ class UserController extends BaseController {
      */
     public function do_forgot_password()
     {
-        if( Confide::forgotPassword( Input::get( 'email' ) ) )
+        if( Confide::forgotPassword( Input::get('email')))
         {
             $notice_msg = Lang::get('confide::confide.alerts.password_forgot');
-                        return Redirect::action('UserController@login')
-                            ->with( 'notice', $notice_msg );
+            return Redirect::action('UserController@login')->with('notice', $notice_msg);
         }
         else
         {
             $error_msg = Lang::get('confide::confide.alerts.wrong_password_forgot');
-                        return Redirect::action('UserController@forgot_password')
-                            ->withInput()
-                ->with( 'error', $error_msg );
+            return Redirect::action('UserController@forgot_password')->withInput()->with('error', $error_msg);
         }
     }
 
@@ -181,8 +170,7 @@ class UserController extends BaseController {
      */
     public function reset_password( $token )
     {
-        return View::make(Config::get('confide::reset_password_form'))
-                ->with('token', $token);
+        return View::make(Config::get('confide::reset_password_form'))->with('token', $token);
     }
 
     /**
@@ -194,22 +182,19 @@ class UserController extends BaseController {
         $input = array(
             'token'=>Input::get( 'token' ),
             'password'=>Input::get( 'password' ),
-            'password_confirmation'=>Input::get( 'password_confirmation' ),
+            'password_confirmation'=>Input::get('password_confirmation'),
         );
 
         // By passing an array with the token, password and confirmation
         if( Confide::resetPassword( $input ) )
         {
             $notice_msg = Lang::get('confide::confide.alerts.password_reset');
-                        return Redirect::action('UserController@login')
-                            ->with( 'notice', $notice_msg );
+            return Redirect::action('UserController@login')->with('notice', $notice_msg);
         }
         else
         {
             $error_msg = Lang::get('confide::confide.alerts.wrong_password_reset');
-                        return Redirect::action('UserController@reset_password', array('token'=>$input['token']))
-                            ->withInput()
-                ->with( 'error', $error_msg );
+            return Redirect::action('UserController@reset_password', array('token'=>$input['token']))->withInput()->with('error', $error_msg);
         }
     }
 
