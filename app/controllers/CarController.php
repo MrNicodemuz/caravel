@@ -17,7 +17,7 @@ class CarController extends BaseController {
             ->get();
         foreach ($temp as $t) {
             $t->delete = false;
-            if ($t->userid === Auth::user()->id) {
+            if (Auth::check() && $t->userid === Auth::user()->id) {
                 $t->delete = true;
             }
         }
