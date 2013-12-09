@@ -13,6 +13,14 @@ class UserTableSeeder extends Seeder {
         $user->password_confirmation = "caravel";
         $user->confirmed = 0;
         $user->save();
+
+        $user = new User;
+        $user->username = "phpuser";
+        $user->email = "phpuser@caravel.com";
+        $user->password = "phpuser";
+        $user->password_confirmation = "phpuser";
+        $user->confirmed = 0;
+        $user->save();
     }
 
 }
