@@ -49,6 +49,7 @@
       </li>
       @else
         <li><a href="/user/login">Login</a></li>
+        <li><a href="/user/create">Register</a></li>
       @endif
     </ul>
   </div><!-- /.navbar-collapse -->
