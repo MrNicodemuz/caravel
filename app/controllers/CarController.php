@@ -32,8 +32,11 @@ class CarController extends BaseController {
     
     public function postNew()
     {
+        $s3 = AWS::get('s3');
+        $uploaded_amazon_s3_url = $s3->upload('pg-hackday-caravel', Input::file('photo')->getClientOriginalName(), file_get_contents(Input::file('photo')), 'public-read')['ObjectURL'];
         
         Car::create(array(
+            'foto_url' => $uploaded_amazon_s3_url,
             'model' => Input::get('model'),
             'year' => Input::get('year'),
             'color' => Input::get('color'),

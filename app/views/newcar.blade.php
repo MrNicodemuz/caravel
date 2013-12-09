@@ -5,7 +5,7 @@
 
     <p>Takes only 10 secs, Yo!</p>
 
-    <form method="POST" action="{{{ URL::to('/car/new') }}}" accept-charset="UTF-8">
+    <form method="POST" action="{{{ URL::to('/car/new') }}}" accept-charset="UTF-8" enctype="multipart/form-data">
         <input type="hidden" name="_token" value="{{{ Session::getToken() }}}">
         <fieldset>
             <div class="form-group">

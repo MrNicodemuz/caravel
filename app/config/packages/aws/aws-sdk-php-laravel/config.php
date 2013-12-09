@@ -47,7 +47,7 @@ return array(
     | eu-west-1, sa-east-1, ap-northeast-1, ap-southeast-1, ap-southeast-2
     |
     */
-    'region' => 'ap-southeast-1',
+    'region' => 'us-east-1',
 
     /*
     |--------------------------------------------------------------------------
