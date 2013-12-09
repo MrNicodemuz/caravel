@@ -3,7 +3,7 @@
 @section('content')
     <h1>Register to Caravel, Yo!</h1>
 
-    <p></p>
+    <p>Takes only 30 secs, Yo!</p>
 
     
     <form method="POST" action="{{{ (Confide::checkAction('UserController@store')) ?: URL::to('user')  }}}" accept-charset="UTF-8">
