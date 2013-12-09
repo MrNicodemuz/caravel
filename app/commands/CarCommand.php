@@ -63,7 +63,7 @@ class CarCommand extends Command {
                 $id = intval($this->argument('arg1'));
                 
                 $this->info("Searching id $id");
-                $car = Car::ofId($id)->get();
+                $car = Car::find($id);
                 
                 if (empty($car)) {
                     $this->error("Id $id not found!\n");

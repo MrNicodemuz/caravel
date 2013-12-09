@@ -24,11 +24,5 @@ class Car extends Eloquent
     {
         return $query->where('model', 'LIKE', "$model%");
     }
-    
-    // For some reason Car::find(3) was returning other ids than 3 as well!
-    public function scopeOfId($query, $id)
-    {
-        return $query->where('id', '=', $id);
-    }
 }
 
