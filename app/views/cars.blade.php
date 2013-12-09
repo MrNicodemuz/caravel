@@ -9,6 +9,9 @@
 
 
 <div class="row cars">
+@if (count($cars) == 0)
+<h1>No cars to show =(</h1>
+@endif
 @foreach ($cars as $car)
     <div class="col-xs-6 col-md-3">
         <div class="thumbnail car">
