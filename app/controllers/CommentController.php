@@ -7,7 +7,7 @@ class CommentController extends BaseController {
         $input = Input::all();
         $comment = new Comment;
         $comment->content = $input['content'];
-        $comment->userid = $input['userid'];
+        $comment->userid = Auth::user()->id;
         $comment->photoid = $input['photoid'];
         $comment->datetime = date("Y-m-d H:i:s");
         $comment->save();
