@@ -37,15 +37,19 @@
       <button type="submit" class="btn btn-default">Submit</button>
     </form>
     <ul class="nav navbar-nav navbar-right">
+      @if(Auth::check())
       <li class="dropdown">
-        <a href="#userMenu" class="dropdown-toggle" data-toggle="dropdown">Hello User! <b class="caret"></b></a>
+        <a href="#userMenu" class="dropdown-toggle" data-toggle="dropdown">Hello {{ Auth::user()->username }}! <b class="caret"></b></a>
         <ul class="dropdown-menu" role="menu">
           <li><a href="#">My Deteils</a></li>
           <li><a href="#">My Cars</a></li>
           <li class="divider"></li>
-          <li><a href="#">Logout</a></li>
+          <li><a href="/user/logout">Logout</a></li>
         </ul>
       </li>
+      @else
+        <li><a href="/user/login">Login</a></li>
+      @endif
     </ul>
   </div><!-- /.navbar-collapse -->
 </div>
