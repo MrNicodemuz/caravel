@@ -52,9 +52,9 @@
 </nav>
 
 
-        <div class="container">
-            @yield('content')
-        </div>
+    <div class="container">
+        @yield('content')
+    </div>
 
     <script src="https://code.jquery.com/jquery.js"></script>
     <script src="/assets/js/bootstrap.min.js"></script>
