@@ -35,7 +35,20 @@ class Car extends Eloquent
     public function scopeGetDistinct($query)
     {
         //TODO: Add more fields
-        return $query->distinct(array('model', 'year', 'color'));
+        return $query
+            ->groupBy('model')
+            ->groupBy('year')
+            ->groupBy('color');
+    }
+    
+    public function scopeGetDistinctModels($query)
+    {
+        return $query->groupBy('model');
+    }
+    
+    public function scopeGetDistinctColors($query)
+    {
+        return $query->groupBy('color');
     }
 }
 
