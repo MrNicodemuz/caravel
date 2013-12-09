@@ -2,19 +2,6 @@
 
 class UserControllerTest extends TestCase {
 
-    public function testShouldGetLoginRedirectIfLogged()
-    {
-        $user = new User;
-        $user->username = 'dummy';
-        $user->email = 'dummy@dummy.com';
-
-        Confide::shouldReceive('user')->once()->andReturn($user);
-
-        $this->action('GET', 'UserController@login');
-
-        $this->assertRedirectedTo('/');
-    }
-
     public function testShouldGetLogin()
     {
         Confide::shouldReceive('user')
@@ -35,6 +22,19 @@ class UserControllerTest extends TestCase {
         $this->action('GET', 'UserController@login');
 
         $this->assertViewHasAll(array());
+    }
+
+    public function testShouldGetLoginRedirectIfLogged()
+    {
+        $user = new User;
+        $user->username = 'dummy';
+        $user->email = 'dummy@dummy.com';
+
+        Confide::shouldReceive('user')->once()->andReturn($user);
+
+        $this->action('GET', 'UserController@login');
+
+        $this->assertRedirectedTo('/');
     }
 
 }
