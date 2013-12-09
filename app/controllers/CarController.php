@@ -21,7 +21,7 @@ class CarController extends BaseController {
                 $t->delete = true;
             }
         }
-        $this->layout->content = View::make('car')->with(array('car' => $car, 'comments' => $temp));
+        return View::make('car')->with(array('car' => $car, 'comments' => $temp));
 
     }
     
