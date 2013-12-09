@@ -8,6 +8,9 @@
         "zizaco/confide": "2.0.x",
         "aws/aws-sdk-php-laravel": "1.*"
 	},
+    "require-dev": {
+        "mockery/mockery": "dev-master@dev"
+    },
 	"autoload": {
 		"classmap": [
 			"app/commands",
