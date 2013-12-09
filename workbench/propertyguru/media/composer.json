@@ -1,0 +1,23 @@
+{
+    "name": "propertyguru/media",
+    "description": "",
+    "authors": [
+        {
+            "name": "Artemis Mendrinos",
+            "email": "artemis@propertyguru.com.sg"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.0",
+        "illuminate/support": "4.0.*"
+    },
+    "autoload": {
+        "classmap": [
+            "src/migrations"
+        ],
+        "psr-0": {
+            "Propertyguru\\Media\\": "src/"
+        }
+    },
+    "minimum-stability": "dev"
+}
