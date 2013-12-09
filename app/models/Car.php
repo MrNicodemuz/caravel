@@ -20,6 +20,23 @@ class Car extends Eloquent
         return $car;
     }
     
+    public function scopeFreeTextSearch($query, $strings)
+    {
+        foreach (preg_split('/[^a-z0-9]/i', $strings, -1, PREG_SPLIT_NO_EMPTY) as $string) {
+            // Search by year if the input looks like it
+            if (preg_match('/^[0-9]{4}$/', $string)) {
+                // echo "Year $string\n";
+                $query->where('year', '=', $string);
+            }
+            else {
+                // echo "Model '$string'\n";
+                $query = $query->where('model', 'LIKE', "%$string%");
+            }
+        }
+        
+        return $query;
+    }
+    
     public function scopeOfModel($query, $model)
     {
         return $query->where('model', 'LIKE', "$model%");

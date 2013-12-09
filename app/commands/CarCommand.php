@@ -64,6 +64,13 @@ class CarCommand extends Command {
                 $cars = Car::ofModel($model)->get();
                 print_r($cars);
                 break;
+            case 'search':
+                $search = $this->argument('arg1');
+                $this->info("Searching $search");
+                
+                $car = Car::freeTextSearch($search)->get();
+                print_r($car);
+                break;
             case 'byColor':
                 $color = $this->argument('arg1');
                 
