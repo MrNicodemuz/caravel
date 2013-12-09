@@ -6,7 +6,7 @@
 
     <br></br>
 
-    <img src="car-1.jpg"></img>
+    <img src="{{asset('assets/images/car-1.jpg')}}" width="400"></img>
 
     @foreach ($comments as $comment)
         <p>{{ $comment->content }} [ {{ $comment->username }} - {{ $comment->datetime }} ]</p>

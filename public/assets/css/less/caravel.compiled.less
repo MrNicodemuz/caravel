@@ -1,1 +1,42 @@
 @import "bootstrap.less";
+
+
+ul.cars{
+    list-style: none;
+    margin: 0;
+
+    li.car{
+        cursor: pointer;
+        float: left;
+        width: 250px;
+        padding: 5px;
+        transition:all 0.35s;
+        position: relative;
+        top: 0px;
+        box-shadow: 0px 0px 5px rgba(0,0,0,0);
+
+
+        &:hover{
+            box-shadow: 0px 5px 5px rgba(0,0,0,0.5);
+            top: -5px;
+        }
+    }
+
+    img{
+        display: block;
+        width: 100%;
+    }
+
+    .model, .year, .ncomments{
+        display: block;
+    }
+
+    .model{
+    }
+
+    .year{
+    }
+
+    .ncomments{
+    }
+}

@@ -24,5 +24,12 @@ class Car extends Eloquent
     {
         return $query->where('model', 'LIKE', "$model%");
     }
+    
+    // This cannot be called "distinct" because it causes infinite recursion
+    public function scopeGetDistinct($query)
+    {
+        //TODO: Add more fields
+        return $query->distinct(array('model', 'year', 'color'));
+    }
 }
 
