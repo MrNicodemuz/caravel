@@ -2,11 +2,8 @@
 
 @section('content')
     
-    {{$car->model}}
-
-    <br></br>
-
-    <img src="{{asset('assets/images/car-1.jpg')}}" width="400"></img>
+    <img src="{{$car->foto_url}}" width="400"></img>
+    <p>{{$car->model}} [ {{$car->year}} - {{$car->color}} ]</p>
 
     @foreach ($comments as $comment)
         <p>{{ $comment->content }} [ {{ $comment->username }} - {{ $comment->datetime }} ]</p>
