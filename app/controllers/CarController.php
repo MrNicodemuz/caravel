@@ -12,10 +12,15 @@ class CarController extends BaseController {
 
         $temp = DB::table('comments')
             ->join('users', 'comments.userid', '=', 'users.id')
-            ->select('users.id', 'users.username', 'users.email', 'comments.content', 'comments.datetime')
+            ->select('comments.id', 'users.username', 'users.email', 'comments.content', 'comments.datetime', 'comments.userid')
             ->where('comments.photoid', '=', $id)
             ->get();
-
+        foreach ($temp as $t) {
+            $t->delete = false;
+            if ($t->userid === Auth::user()->id) {
+                $t->delete = true;
+            }
+        }
         $this->layout->content = View::make('car')->with(array('car' => $car, 'comments' => $temp));
 
     }

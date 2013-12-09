@@ -15,4 +15,11 @@ class CommentController extends BaseController {
         return Redirect::to('car/'.$input['photoid']);
     }
 
+    public function deleteComment($id)
+    {
+        $comment = Comment::find($id);
+        $comment->delete();
+
+        return Redirect::back();
+    }
 }

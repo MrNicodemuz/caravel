@@ -35,4 +35,5 @@ Route::get( 'user/logout',                 'UserController@logout');
 
 // Add comment to a picture
 Route::post('addComment', 'CommentController@createComment');
+Route::get('deleteComment/{id}', 'CommentController@deleteComment');
 
