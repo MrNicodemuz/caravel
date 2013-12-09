@@ -37,4 +37,13 @@ class UserControllerTest extends TestCase {
         $this->assertRedirectedTo('/');
     }
 
+    public function testLogout()
+    {
+        Confide::shouldReceive('logout')->once();
+
+        $this->action('GET', 'UserController@logout');
+
+        $this->assertRedirectedTo('/');
+    }
+
 }
