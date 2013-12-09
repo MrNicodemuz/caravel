@@ -15,5 +15,14 @@ class CarController extends BaseController {
         $this->layout->content = View::make('car')->with(array('car' => $car, 'comments' => $comments));
 
     }
+    
+    public function getNew()
+    {
+        return View::make('newcar');
+    }
+    
+    public function postNew()
+    {
+    }
 
 }

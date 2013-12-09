@@ -16,6 +16,7 @@ Route::get('/', function()
 	return View::make('hello');
 });
 
+Route::get('car/new', 'CarController@getNew');
 Route::get('car/{id}', 'CarController@getIndex');
 Route::get('search/{query?}', 'SearchCarController@search');
 
