@@ -1,5 +1,9 @@
-<h1>Register to Caravel, Yo!</h1>
+@extends('layouts.master')
 
-<p></p>
+@section('content')
+    <h1>Register to Caravel, Yo!</h1>
 
-{{ Confide::makeLoginForm()->render() }}
+    <p></p>
+
+    {{ Confide::makeLoginForm()->render() }}
+@stop
