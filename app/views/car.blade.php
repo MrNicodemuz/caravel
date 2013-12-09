@@ -22,9 +22,9 @@
                 <li class="comment">
                     <p><span class="person">{{ $comment->username }}</span> @ {{ $comment->datetime }} said:</p>
                     <blockquote>
-                        <p>{{ $comment->content }}</p>
+                        <p>{{{ $comment->content }}}</p>
                         @if ($comment->delete)
-                            <a title="Delete comment" class="comment-delete" href="/deleteComment/{{$comment->id}}"><img src="{{asset('assets/images/delete.png')}}"/></a>
+                            <a title="Delete comment" class="comment-delete glyphicon glyphicon-trash" href="/deleteComment/{{$comment->id}}"></a>
                         @endif
                     </blockquote>
                 </li>
