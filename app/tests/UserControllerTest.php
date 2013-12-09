@@ -48,9 +48,30 @@ class UserControllerTest extends TestCase {
             ->andReturn(true)
             ->once();
 
-        $this->call('POST', 'user/login', array('email' => 'dummy@dummy.com'));
+        $this->call('POST', 'user/login', array('email' => 'dummy@dummy.com', 'password' => 'dummy'));
 
         $this->assertRedirectedTo('/');
+    }
+
+    public function testDoLoginWithWrongCredentials()
+    {
+        Config::shouldReceive('get')
+            ->with('confide::signup_confirm')
+            ->once()
+            ->andReturn(false);
+
+        Confide::shouldReceive('logAttempt')
+            ->andReturn(false)
+            ->once();
+
+        Lang::shouldReceive('get')
+            ->with('confide::confide.alerts.wrong_credentials')
+            ->andReturn('WRONG CREDENTIALS IDIOT!')
+            ->once();
+
+        $this->call('POST', 'user/login', array('email' => 'dummy@dummy.com', 'password' => 'dummy'));
+
+        $this->assertRedirectedTo('user/login', array('error' => 'WRONG CREDENTIALS IDIOT!'));
     }
 
     public function testLogout()
