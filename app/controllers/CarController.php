@@ -10,7 +10,10 @@ class CarController extends BaseController {
             return View::make('404');
         }
 
-        $this->layout->content= View::make('car')->with('car', $car);
+        $comments = Comment::where('photoid', '=', $id)->take(10)->get();
+
+        $this->layout->content = View::make('car')->with(array('car' => $car, 'comments' => $comments));
+
     }
 
 }
