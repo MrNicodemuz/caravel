@@ -27,6 +27,15 @@ class CarController extends BaseController {
     
     public function postNew()
     {
+        
+        Car::create(array(
+            'model' => Input::get('model'),
+            'year' => Input::get('year'),
+            'color' => Input::get('color'),
+            'user_id' => Auth::user()->id
+        ))->save();
+        
+        return Redirect::to('/');
     }
 
 }
