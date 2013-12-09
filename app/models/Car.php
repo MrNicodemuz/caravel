@@ -63,6 +63,11 @@ class Car extends Eloquent
         return $query->groupBy('model');
     }
     
+    public function scopeGetDistinctYears($query)
+    {
+        return $query->groupBy('year');
+    }
+    
     public function scopeGetDistinctColors($query)
     {
         return $query->groupBy('color');

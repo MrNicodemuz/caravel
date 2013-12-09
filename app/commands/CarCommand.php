@@ -48,6 +48,7 @@ class CarCommand extends Command {
                 'distinct',
                 'distinctModels',
                 'distinctColors',
+                'distinctYears',
                 'delete id'
             )) .
             "\n";
@@ -123,6 +124,10 @@ class CarCommand extends Command {
                 
                 //Optional syntax to only get color:
                 //$distinct = Car::getDistinctColors()->get(array('color'));
+                print_r($distinct);
+                break;
+            case 'distinctYears':
+                $distinct = Car::getDistinctYears()->get();
                 print_r($distinct);
                 break;
             case 'delete':
