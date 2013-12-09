@@ -48,7 +48,7 @@
         <li class="dropdown">
           <a href="#userMenu" class="dropdown-toggle" data-toggle="dropdown">Hello {{ Auth::user()->username }}! <b class="caret"></b></a>
           <ul class="dropdown-menu" role="menu">
-            <li><a href="#">My Cars</a></li>
+            <li><a href="/mycars/{{ Auth::user()->id }}">My Cars</a></li>
             <li class="divider"></li>
             <li><a href="/user/logout">Logout</a></li>
           </ul>

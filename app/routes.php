@@ -18,6 +18,8 @@ Route::post('car/new', 'CarController@postNew');
 Route::get('car/{id}', 'CarController@getIndex');
 Route::get('search/{query?}', 'SearchCarController@search');
 Route::get('models', 'ModelsController@getModels');
+Route::get('mycars/{id}', 'SearchCarController@usersCars');
+
 
 // Confide routes
 Route::get( 'user/create',                 'UserController@create');
