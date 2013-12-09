@@ -7,7 +7,6 @@
 </div>
 
 
-@if(count($comments)>0)
 <div class="panel panel-primary">
     <div class="panel-heading">
     @if(count($comments)>0)
@@ -36,7 +35,7 @@
         <div class="panel panel-success">
             <div class="panel-heading">
                 @if(count($comments)>0)
-                  <h3 class="panel-title">Comment</h3>
+                  <h3 class="panel-title">Hey <strong>{{ Auth::user()->username }}</strong>, drop a comment</h3>
                 @else
                   <h3 class="panel-title">Add the first Comment!</h3>
                 @endif
@@ -61,8 +60,4 @@
         </div>
     </div>
 </div>
-@endif
-
-
 @stop
-

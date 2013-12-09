@@ -48,7 +48,6 @@
         <li class="dropdown">
           <a href="#userMenu" class="dropdown-toggle" data-toggle="dropdown">Hello {{ Auth::user()->username }}! <b class="caret"></b></a>
           <ul class="dropdown-menu" role="menu">
-            <li><a href="#">My Details</a></li>
             <li><a href="#">My Cars</a></li>
             <li class="divider"></li>
             <li><a href="/user/logout">Logout</a></li>
@@ -69,9 +68,12 @@
     <div class="container">
         @yield('content')
     </div>
+
+    <div id="footer">
     <footer class="container">
       <p>&copy; Caravel 2013</p>
     </footer>
+    </div>
 
     <script src="https://code.jquery.com/jquery.js"></script>
     <script src="/assets/js/bootstrap.min.js"></script>
