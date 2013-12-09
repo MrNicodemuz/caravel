@@ -10,7 +10,7 @@ class SearchCarController extends BaseController {
 
         $cars = Car::ofModel($query)->get();
 
-        $this->layout->content= View::make('cars')
+        return View::make('cars')
             ->with('cars', $cars)
             ->with('query', $query);
     }

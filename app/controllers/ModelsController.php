@@ -10,6 +10,6 @@ class ModelsController extends BaseController {
             return View::make('404');
         }
 
-        $this->layout->content = View::make('models')->with(array('models' => $models));
+        return View::make('models')->with(array('models' => $models));
     }
 }
