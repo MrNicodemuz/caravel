@@ -35,7 +35,13 @@
         <div class="panel panel-success">
             <div class="panel-heading">
                 @if(count($comments)>0)
-                  <h3 class="panel-title">Hey <strong>{{ Auth::user()->username }}</strong>, drop a comment</h3>
+                  <h3 class="panel-title">Hey
+                  @if(Auth::check())
+                    <strong>{{ Auth::user()->username }}</strong>,
+                  @else
+                    <strong>You</strong>,
+                  @endif
+                     drop a comment</h3>
                 @else
                   <h3 class="panel-title">Add the first Comment!</h3>
                 @endif
